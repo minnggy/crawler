@@ -1,0 +1,10 @@
+{
+  "master_rows": 1348454,
+  "skills_rows": 1296381,
+  "master_duplicate_urls": 0,
+  "skills_duplicate_urls": 0,
+  "skills_matching_master": 1296381,
+  "master_without_skills": 52073,
+  "skills_coverage_of_master": 0.9613831840018273,
+  "summary_processed": false
+}

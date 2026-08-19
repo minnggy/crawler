@@ -1,0 +1,38 @@
+# macOS and editor files
+.DS_Store
+
+# Python caches and test artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Node.js dependencies and build artifacts
+node_modules/
+.pnpm-store/
+site/.next/
+site/.vinext/
+site/out/
+site/dist/
+site/coverage/
+site/.wrangler/
+site/outputs/
+site/work/
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+
+# Generated databases and full-size data exports
+*.sqlite
+*.sqlite3
+*.db
+archive_skills_processed/job_skills_normalized.csv
+archive_skills_processed/linkedin_job_postings_normalized.csv
+
+# Local backups and nested repository metadata
+site/public_backup_*/
+site/.git.backup-before-root/

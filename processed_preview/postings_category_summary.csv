@@ -1,0 +1,15 @@
+category,value,count
+formatted_work_type,Full-time,82
+formatted_work_type,Internship,1
+formatted_work_type,Contract,6
+formatted_work_type,Part-time,8
+formatted_work_type,Temporary,2
+formatted_work_type,Volunteer,1
+work_type,FULL_TIME,82
+work_type,INTERNSHIP,1
+work_type,CONTRACT,6
+work_type,PART_TIME,8
+work_type,TEMPORARY,2
+work_type,VOLUNTEER,1
+formatted_experience_level,Entry level,1
+formatted_experience_level,Mid-Senior level,2
