@@ -1,15 +1,17 @@
-import type { Metadata } from "next";
-import { SkeletonPreview } from "./_sites-preview/SkeletonPreview";
-
-export const metadata: Metadata = {
-  title: "Your site is taking shape",
-  description:
-    "Your first version will appear here automatically when it’s ready.",
-  other: {
-    "codex-preview": "development",
-  },
-};
-
 export default function Home() {
-  return <SkeletonPreview />;
+  return (
+    <main className="dashboard-host">
+      <iframe
+        className="dashboard-frame"
+        src="/job-radar-p0-final.html"
+        title="Job Radar 職缺雷達"
+      />
+      <noscript>
+        <p>
+          請啟用 JavaScript，或直接開啟
+          <a href="/job-radar-p0-final.html">Job Radar 職缺雷達</a>。
+        </p>
+      </noscript>
+    </main>
+  );
 }

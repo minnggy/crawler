@@ -1,0 +1,82 @@
+{
+  "source_file": "/Users/wangmingfang/Downloads/postings.csv",
+  "output_file": "/Users/wangmingfang/Desktop/crawler/data_augmented/postings_with_synthetic_applies.csv",
+  "method_version": "conditional_hotdeck_views_v1",
+  "random_seed": 20260820,
+  "row_count": 123849,
+  "unique_job_id_count": 123849,
+  "observed_rows": 23320,
+  "synthetic_rows": 100529,
+  "original_coverage_pct": 18.82938093969269,
+  "analysis_coverage_pct": 100.0,
+  "observed_distribution": {
+    "count": 23320,
+    "p25": 1.0,
+    "median": 3.0,
+    "p75": 8.0,
+    "p90": 24.0,
+    "p95": 45.0,
+    "p99": 133.8100000000013,
+    "share_25_plus_pct": 9.66123499142367,
+    "max": 967
+  },
+  "synthetic_distribution": {
+    "count": 100529,
+    "p25": 1.0,
+    "median": 1.0,
+    "p75": 1.0,
+    "p90": 2.0,
+    "p95": 2.0,
+    "p99": 4.0,
+    "share_25_plus_pct": 0.1163843269106427,
+    "max": 323
+  },
+  "combined_distribution": {
+    "count": 123849,
+    "p25": 1.0,
+    "median": 1.0,
+    "p75": 1.0,
+    "p90": 3.0,
+    "p95": 8.0,
+    "p99": 44.0,
+    "share_25_plus_pct": 1.9136206186565898,
+    "max": 967
+  },
+  "integrity": {
+    "observed_values_unchanged": true,
+    "all_analysis_values_integer": true,
+    "all_analysis_values_at_least_one": true,
+    "values_do_not_exceed_known_views": true,
+    "rows_without_observed_or_imputed_views": 1,
+    "missing_analysis_values": 0
+  },
+  "holdout_validation": {
+    "rows": 4664,
+    "actual": {
+      "count": 4664,
+      "p25": 1.0,
+      "median": 3.0,
+      "p75": 8.0,
+      "p90": 24.0,
+      "p95": 44.849999999999454,
+      "p99": 147.0,
+      "share_25_plus_pct": 9.798456260720412,
+      "max": 530
+    },
+    "predicted": {
+      "count": 4664,
+      "p25": 1.0,
+      "median": 3.0,
+      "p75": 8.0,
+      "p90": 23.0,
+      "p95": 42.0,
+      "p99": 148.10999999999967,
+      "share_25_plus_pct": 9.498284734133792,
+      "max": 4684
+    },
+    "median_absolute_error": 2.0,
+    "median_absolute_log_error": 0.4054651081081645,
+    "within_same_dashboard_bucket_pct": 82.03259005145797
+  },
+  "caveat": "Synthetic values are conditional estimates for missing applicant counts, not observed LinkedIn outcomes. Missingness is not random, so the augmented dataset must keep the source label in all downstream analysis."
+}

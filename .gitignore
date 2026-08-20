@@ -32,6 +32,15 @@ site/work/
 *.db
 archive_skills_processed/job_skills_normalized.csv
 archive_skills_processed/linkedin_job_postings_normalized.csv
+data_augmented/postings_with_synthetic_applies.csv
+
+# Presentation build and render artifacts
+.codex-presentations/
+ppt_build/
+*.pptx.inspect.ndjson
+Job_Radar_5分鐘報告_初版.pptx
+Job_Radar_5分鐘報告_初版/
+Job_Radar_Python_專案簡報/
 
 # Local backups and nested repository metadata
 site/public_backup_*/

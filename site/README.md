@@ -1,100 +1,48 @@
-# vinext-starter
+# Job Radar 職缺市場分析儀表板
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+Job Radar 使用公開 LinkedIn 職缺資料，呈現職務、技能、公司、地點、薪資、
+經驗層級、技能組合與應徵競爭度。選擇技能後，各分析區塊會同步更新。
 
 ## Prerequisites
 
 - Node.js `>=22.13.0`
 
-## Quick Start
+## 本機開啟
 
 ```bash
 npm install
 npm run dev
-npm run build
 ```
 
-This starter does not use `wrangler.jsonc`.
+啟動後依終端顯示的網址開啟首頁。也可直接開啟
+`public/job-radar-p0-final.html`，不需要後端服務。
 
-## Included Shape
+## GitHub Pages
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
+專案已包含 `.github/workflows/pages.yml`，會把 `site/public` 當成靜態網站發布。
 
-## Workspace Auth Headers
+1. 將功能分支合併到 `main`。
+2. 到 GitHub repository 的 **Settings → Pages**。
+3. 在 **Build and deployment → Source** 選擇 **GitHub Actions**。
+4. 到 **Actions** 查看 `Deploy Job Radar to GitHub Pages` 是否完成。
+5. 網站網址通常為：
 
-Signed-in visitors receive both `oai-authenticated-user-id` and `oai-authenticated-user-email`. Private Sites require every visitor to sign in; public Sites may also have anonymous visitors, for whom neither header is present.
-
-The user ID is stable for the same user on the same Site and different across Sites. Email and name are intended for display or contact purposes.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const userId = requestHeaders.get("oai-authenticated-user-id");
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```text
+https://minnggy.github.io/crawler/job-radar-p0-final.html
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+如果希望 repository 首頁直接顯示儀表板，可再將
+`job-radar-p0-final.html` 複製或改名為 `index.html`。
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+## 主要檔案
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+- `public/job-radar-p0-final.html`：互動式儀表板
+- `public/job-dashboard-data.js`：職務、公司、地點與技能資料
+- `public/competition-synthetic-data.js`：應徵競爭補充資料
+- `tests/rendered-html.test.mjs`：網站輸出測試
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
+## 驗證
 
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
-
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
-
-## Useful Commands
-
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+```bash
+npm test
+```
